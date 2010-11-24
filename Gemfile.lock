@@ -48,6 +48,7 @@ GEM
       mongo (~> 1.1)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
+    nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -80,4 +81,5 @@ PLATFORMS
 DEPENDENCIES
   bson_ext (= 1.1.2)
   mongoid (= 2.0.0.beta.20)
+  nokogiri
   rails (= 3.0.3)
