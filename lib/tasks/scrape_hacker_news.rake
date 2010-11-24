@@ -14,15 +14,12 @@ namespace :scrape do
         article   = Article.find(:first, :conditions => {:hacker_id => hacker_id})
         if article
           article.update_attributes(:score => score)
-          puts 'updating an article'
         else
           link  = data_block[0].css('a:first').last
           url   = link.attr(:href)
           title = link.children.to_s
-          puts 'should be making an article'
           article = Article.create(:score => score, :title => title, :url => url, :hacker_id => hacker_id)
         end
-        puts article.inspect
       end
     end
   end
