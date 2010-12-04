@@ -1,2 +1,2 @@
-require 'busy_hacker'
+require './busy_hacker'
 run Sinatra::Application
