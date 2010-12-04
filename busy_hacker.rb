@@ -1,6 +1,10 @@
-require 'rubygems'
-require 'sinatra'
+require 'uri'
 
 get '/' do
-  "sup, bitches"
+  haml :index
+end
+
+get '/style.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  scss :style
 end
