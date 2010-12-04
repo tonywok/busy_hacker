@@ -1,9 +1,13 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    bson (1.1.4)
+    bson_ext (1.1.4)
     daemons (1.1.0)
     eventmachine (0.12.10)
     haml (3.0.24)
+    mongo (1.1.4)
+      bson (>= 1.1.1)
     rack (1.2.1)
     sass (3.1.0.alpha.49)
     shotgun (0.8)
@@ -21,7 +25,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson_ext
   haml
+  mongo
   sass
   shotgun
   sinatra

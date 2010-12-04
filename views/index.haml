@@ -5,3 +5,8 @@
     %link{:rel => 'stylesheet', :href => '/style.css', :type => 'text/css', :media => 'all'}
   %body
     %h1 busy_hacker
+    %form{:action => '/subscribe', :method => 'post'}
+      %label{:for => 'subscribe'} Subscribe
+      %input{:name => 'email', :type => 'text'}
+      %input{:type => 'submit', :text => 'Do it'}
+
