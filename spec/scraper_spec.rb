@@ -1,8 +1,25 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 describe Scraper do
-  it 'has access to scraper collection' do
-    Scraper.articles.should be_a(Mongo::Collection)
+  describe "Scraper#articles" do
+    it 'has access to scraper collection' do
+      Scraper.articles.should be_a(Mongo::Collection)
+    end
+  end
+
+  describe "Scraper#scrape_hn"do
+    before do
+      hn_frontpage = File.open("spec/data/hacker_news_site.html")
+      data = Nokogiri::HTML(open(hn_frontpage))
+      Scraper.should_receive(:parse_file).and_return(data)
+    end
+
+    context 'when scraping data off of HN for the first time' do
+      it 'creates 30 documents' do
+        Scraper.scrape_hn
+        Scraper.articles.count().should == 30
+      end
+    end
   end
 
   context 'when an article is already in the db' do

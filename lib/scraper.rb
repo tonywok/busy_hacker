@@ -6,8 +6,12 @@ class Scraper
     @articles ||= DATABASE.collection('articles')
   end
 
+  def parse_file
+    Nokogiri::HTML(open('http://news.ycombinator.com'))
+  end
+
   def self.scrape_hn
-    doc = Nokogiri::HTML(open('http://news.ycombinator.com'))
+    doc = parse_file
 
     doc.xpath('//table')[2].children.each_slice(3).each do |data_block|
       score_row = data_block[1]
