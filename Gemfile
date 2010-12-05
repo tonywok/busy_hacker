@@ -5,6 +5,7 @@ gem 'haml'
 gem 'sass'
 gem 'bson_ext'
 gem 'mongo'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug'

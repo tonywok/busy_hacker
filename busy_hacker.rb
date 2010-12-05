@@ -1,5 +1,6 @@
 require 'uri'
 require 'open-uri'
+require './lib/scraper'
 
 configure do
   environment     = ENV['RACK_ENV'] || 'development'
@@ -33,4 +34,5 @@ post '/subscribe' do
 end
 
 get '/scrape' do
+  Scraper.scrape_hn
 end
