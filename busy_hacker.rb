@@ -3,8 +3,7 @@ require 'open-uri'
 require './lib/scraper'
 
 configure do
-  environment     = ENV['RACK_ENV'] || 'development'
-  COLLECTION_NAME = ENV['BUSY_HACKER_COLLECTION'] || "#{environment}_emails"
+  environment        = ENV['RACK_ENV'] || Sinatra::Application.environment
 
   if connection_str = ENV['MONGOHQ_URL']
     uri  = URI.parse(connection_str)
@@ -28,7 +27,7 @@ end
 
 post '/subscribe' do
   email = params[:email]
-  coll = DATABASE.collection(COLLECTION_NAME)
+  coll = DATABASE.collection('emails')
   doc = {"email" => email}
   coll.insert(doc)
 end

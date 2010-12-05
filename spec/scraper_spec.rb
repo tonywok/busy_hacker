@@ -1,6 +1,10 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 describe Scraper do
+
+  before { Scraper.articles.drop() }
+  after  { Scraper.articles.drop() }
+
   describe "Scraper#articles" do
     it 'has access to scraper collection' do
       Scraper.articles.should be_a(Mongo::Collection)
@@ -28,10 +32,8 @@ describe Scraper do
                  url: 'www.tonyschneider.com',
                  hacker_id: 3} }
     before do
-      Scraper.articles.drop()
       Scraper.articles.insert(doc)
     end
-    after  { Scraper.articles.drop() }
 
     it 'can find the document' do
       article = Scraper.articles.find({hacker_id: 3}).first
@@ -51,8 +53,6 @@ describe Scraper do
                  title: 'Google buys Busy Hacker for 1.3 Billion',
                  url: 'www.tonyschneider.com',
                  hacker_id: 3} }
-    before { Scraper.articles.drop() }
-    after  { Scraper.articles.drop() }
 
     it 'inserts the document' do
       Scraper.articles.insert(doc)
