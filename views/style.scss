@@ -6,10 +6,11 @@ body {
 h1 {
   font-size: 2em;
   line-height: 3.0em;
-  color: #fff;
+  color: #000;
 
-  span.black {
-    color: #000;
+  span.white {
+    color: #fff;
+    font-weight: lighter;
   }
 }
 
