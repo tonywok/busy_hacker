@@ -1,4 +1,5 @@
 require 'uri'
+require 'open-uri'
 
 configure do
   environment     = ENV['RACK_ENV'] || 'development'

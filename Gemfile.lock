@@ -1,14 +1,39 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    archive-tar-minitar (0.5.2)
     bson (1.1.4)
     bson_ext (1.1.4)
+    columnize (0.3.2)
     daemons (1.1.0)
+    diff-lcs (1.1.2)
     eventmachine (0.12.10)
     haml (3.0.24)
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     mongo (1.1.4)
       bson (>= 1.1.1)
     rack (1.2.1)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    rspec (2.2.0)
+      rspec-core (~> 2.2)
+      rspec-expectations (~> 2.2)
+      rspec-mocks (~> 2.2)
+    rspec-core (2.2.1)
+    rspec-expectations (2.2.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.2.0)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     sass (3.1.0.alpha.49)
     shotgun (0.8)
       rack (>= 1.0)
@@ -28,6 +53,9 @@ DEPENDENCIES
   bson_ext
   haml
   mongo
+  rack-test
+  rspec
+  ruby-debug19
   sass
   shotgun
   sinatra
