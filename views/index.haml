@@ -2,11 +2,16 @@
 %html
   %head
     %title busy_hacker - Weekly email summarizing the hottest Hacker News Posts
+    %link{:rel => 'stylesheet', :href => '/css/reset.css', :type => 'text/css', :media => 'all'}
     %link{:rel => 'stylesheet', :href => '/style.css', :type => 'text/css', :media => 'all'}
   %body
-    %h1 busy_hacker
-    %form{:action => '/subscribe', :method => 'post'}
-      %label{:for => 'subscribe'} Subscribe
-      %input{:name => 'email', :type => 'text'}
-      %input{:type => 'submit', :text => 'Do it'}
-
+    #header_wrapper
+      #header
+        %h1
+          %span.black Busy
+          Hacker
+    #main_content
+      %form{:action => '/subscribe', :method => 'post'}
+        %label{:for => 'subscribe'} Subscribe
+        %input{:name => 'email', :type => 'text'}
+        %input{:type => 'submit', :value => 'Do it'}

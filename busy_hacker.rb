@@ -32,3 +32,5 @@ post '/subscribe' do
   coll.insert(doc)
 end
 
+get '/scrape' do
+end

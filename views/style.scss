@@ -1,4 +1,38 @@
 body {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-color: #f6f6ef;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 3.0em;
+  color: #fff;
+
+  span.black {
+    color: #000;
+  }
+}
+
+#header {
   width: 800px;
   margin: 0 auto;
+
+  h1 {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: #F60;
+  }
+}
+
+#main_content {
+  background-color: #FFF;
+  border-right: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  width: 800px;
+  margin: 0 auto;
+  padding: 10em 25px 25px 25px;
 }
