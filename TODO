@@ -1,0 +1,17 @@
+Specs
+  - wget test harness for hackernews site, pull a new one if it's been a day
+
+Models(email and Article
+  - abstract into class
+  - generic validation module
+
+Heroku
+  - add cron
+  - crontab for hourly hits?
+
+Frontend
+  - some more stylin'
+  - ajax form submission with errors
+
+Mailchimp
+  - well, start it.
