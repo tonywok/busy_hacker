@@ -5,6 +5,10 @@ Models(email and Article
   - abstract into class
   - generic validation module
 
+Validation
+  - improve client syntax
+  - custom messages
+
 Heroku
   - add cron
   - crontab for hourly hits?

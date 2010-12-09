@@ -8,7 +8,6 @@ gem 'mongo'
 gem 'nokogiri'
 gem 'pony'
 
-
 group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
