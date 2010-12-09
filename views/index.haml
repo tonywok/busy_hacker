@@ -10,7 +10,8 @@
         Busy
         %span.white Hacker
     #main_content
+      %h2= @message || ""
       %form{:action => '/subscribe', :method => 'post'}
         %label{:for => 'subscribe'} Subscribe
-        %input{:name => 'email', :type => 'text'}
+        %input{:name => 'address', :type => 'text'}
         %input{:type => 'submit', :value => 'Do it'}

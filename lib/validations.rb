@@ -22,11 +22,12 @@ module Validations
   end
 
   def valid?
-    validate!
+    validate
     errors.empty?
   end
 
-  def validate!
+  def validate
+    # find a place to throw error, perhaps validate!
     self.class.validations.each do |validation, options|
       options.each do |attr,options|
         self.send("#{validation}?".to_sym, attr, options)

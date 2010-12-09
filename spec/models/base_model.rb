@@ -15,7 +15,7 @@ describe BaseModel do
     end
 
     describe 'validations' do
-      it 'has_them' do
+      it 'has them' do
         BaseModel.validations.should == {}
       end
     end

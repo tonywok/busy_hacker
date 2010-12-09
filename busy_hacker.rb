@@ -1,9 +1,10 @@
 require 'uri'
 require 'open-uri'
 require './lib/scraper'
+require './lib/email'
 
 configure do
-  environment        = ENV['RACK_ENV'] || Sinatra::Application.environment
+  environment = ENV['RACK_ENV'] || Sinatra::Application.environment
 
   if connection_str = ENV['MONGOHQ_URL']
     uri  = URI.parse(connection_str)
@@ -26,10 +27,16 @@ get '/style.css' do
 end
 
 post '/subscribe' do
-  email = params[:email]
-  coll = DATABASE.collection('emails')
-  doc = {"email" => email}
-  coll.insert(doc)
+  email = Email.new(:address => params[:address])
+  if email.valid?
+    Email.collection.insert({"address" => email.address})
+    #subscribe mail chump?
+    @message = "Thanks, confirmation email on its way!"
+  else
+    @message = "The email you provided was invalid"
+  end
+
+  haml :index
 end
 
 get '/scrape' do

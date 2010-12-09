@@ -5,7 +5,7 @@ describe Email do
   after { Email.collection.drop() }
 
   describe 'validations' do
-    context 'address' do
+    context 'address is unique' do
       it 'is invalid if address exists' do
         Email.collection.insert({address: 'tonywok@gmail.com'})
         email = Email.new(:address => 'tonywok@gmail.com')
@@ -17,7 +17,9 @@ describe Email do
         email = Email.new(:address => 'tonywok@gmail.com')
         email.valid?.should be_true
       end
+    end
 
+    context 'address is formatted as an email' do
       it 'is invalid if not formatted as an email' do
         email = Email.new(:address => 'jiveturkey')
         email.valid?
@@ -28,7 +30,9 @@ describe Email do
         email = Email.new(:address => 'jiveturkey@jammer.com')
         email.valid?.should be_true
       end
+    end
 
+    context 'address is a required field' do
       it 'is invalid if it is not present' do
         email = Email.new
         email.valid?
