@@ -4,6 +4,10 @@ Specs
 Models
   - Tell the difference between attrs that are to be persisted and not
 
+Validation
+  - improve client syntax
+  - custom messages
+
 Heroku
   - add cron
   - crontab for hourly hits?

@@ -6,14 +6,26 @@ require './lib/email'
 configure do
   environment = ENV['RACK_ENV'] || Sinatra::Application.environment
 
+
   if connection_str = ENV['MONGOHQ_URL']
     uri  = URI.parse(connection_str)
     conn = Mongo::Connection.from_uri(connection_str)
     DATABASE = conn.db(uri.path.gsub(/^\//, ''))
     DATABASE.authenticate(uri.user, uri.password)
+
+    Pony.options = { :from => 'noreply@busyhacker.com', :via => :smtp, :via_options => {
+      :address        => 'smtp.sendgrid.net',
+      :port           => 25,
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'] || '',
+      :password       => ENV['SENDGRID_PASSWORD'] || '',
+      :domain         => ENV['SENDGRID_DOMAIN'] || 'localhost'}
+    }
   else
     conn = Mongo::Connection.from_uri('mongodb://localhost')
     DATABASE = conn.db("busyhacker_#{environment}")
+
+    Pony.options = { :from => 'noreply@busyhacker.com' }
   end
 end
 
@@ -31,6 +43,7 @@ post '/subscribe' do
   if email.valid?
     Email.collection.insert({"address" => email.address})
     @message = "Thanks, confirmation email on its way!"
+    Pony.mail(:to => 'tsnydermtg@gmail.com', :subject => "Hi", :body => 'whatup?')
   else
     @message = "The email you provided was invalid"
   end
