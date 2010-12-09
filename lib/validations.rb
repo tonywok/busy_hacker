@@ -5,15 +5,19 @@ module Validations
     end
 
     def must_be_unique(attr, options = {})
-      validations[:unique] = { "#{attr}".to_sym => options }
+      validations[:unique].merge!({"#{attr}".to_sym => options})
     end
 
     def must_be_formatted(attr, options = {})
-      validations[:formatted] = { "#{attr}".to_sym => options }
+      validations[:formatted].merge!({"#{attr}".to_sym => options})
     end
 
     def must_be_present(attr, options = {})
-      validations[:present] = { "#{attr}".to_sym => options }
+      validations[:present].merge!({"#{attr}".to_sym => options})
+    end
+
+    def must_be_number(attr, options = {:integer => false})
+      validations[:number].merge!({"#{attr}".to_sym => options})
     end
   end
 
@@ -27,7 +31,6 @@ module Validations
   end
 
   def validate
-    # find a place to throw error, perhaps validate!
     self.class.validations.each do |validation, options|
       options.each do |attr,options|
         self.send("#{validation}?".to_sym, attr, options)
@@ -50,8 +53,17 @@ module Validations
 
   def present?(attr, options)
     attr_value = self.send(attr)
-    if attr_value.nil? || attr_value.empty?
-      errors << "Email #{attr} is required"
+    if attr_value.nil?
+      errors << "That #{attr} is required"
+    end
+  end
+
+  def number?(attr, options)
+    attr_value = self.send(attr)
+    if options[:integer] == true
+      errors << "That #{attr} is not an integer" unless attr_value.is_a?(Fixnum)
+    else
+      errors << "That #{attr} is not a number" unless attr_value.is_a?(Numeric)
     end
   end
 

@@ -30,7 +30,6 @@ post '/subscribe' do
   email = Email.new(:address => params[:address])
   if email.valid?
     Email.collection.insert({"address" => email.address})
-    #subscribe mail chump?
     @message = "Thanks, confirmation email on its way!"
   else
     @message = "The email you provided was invalid"

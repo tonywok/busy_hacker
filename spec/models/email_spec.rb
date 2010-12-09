@@ -36,12 +36,12 @@ describe Email do
       it 'is invalid if it is not present' do
         email = Email.new
         email.valid?
-        email.errors.should include 'Email address is required'
+        email.errors.should include 'That address is required'
       end
 
       it 'is valid if it is present' do
         email = Email.new(:address => 'foo@bar.com')
-        email.errors.should_not include 'Email address is required'
+        email.errors.should_not include 'That address is required'
       end
     end
   end

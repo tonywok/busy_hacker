@@ -28,7 +28,7 @@ class Scraper
           link    = data_block[0].css('a:first').last
           url     = link.attr(:href)
           title   = link.children.to_s
-          articles.insert({url: url, title: title, score: score, hacker_id: hacker_id})
+          articles.insert({url: url, title: title, score: score, hacker_id: hacker_id, date_added: Time.now})
         end
       end
     end

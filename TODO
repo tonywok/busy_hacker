@@ -1,17 +1,14 @@
 Specs
   - wget test harness for hackernews site, pull a new one if it's been a day
 
-Models(email and Article
-  - abstract into class
-  - generic validation module
+Models
+  - Tell the difference between attrs that are to be persisted and not
 
 Heroku
   - add cron
   - crontab for hourly hits?
+  - micro ec2 computation
 
 Frontend
   - some more stylin'
   - ajax form submission with errors
-
-Mailchimp
-  - well, start it.
