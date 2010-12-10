@@ -17,10 +17,11 @@ configure do
       :address        => 'smtp.sendgrid.net',
       :port           => 25,
       :authentication => :plain,
-      :user_name      => ENV['SENDGRID_USERNAME'] || '',
-      :password       => ENV['SENDGRID_PASSWORD'] || '',
-      :domain         => ENV['SENDGRID_DOMAIN'] || 'localhost'}
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => ENV['SENDGRID_DOMAIN']}
     }
+    raise ENV['SENDGRID_PASSWORD'].to_s
   else
     conn = Mongo::Connection.from_uri('mongodb://localhost')
     DATABASE = conn.db("busyhacker_#{environment}")
