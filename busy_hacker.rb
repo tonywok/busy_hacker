@@ -43,7 +43,7 @@ post '/subscribe' do
   if email.valid?
     Email.collection.insert({"address" => email.address})
     @message = "Thanks, confirmation email on its way!"
-    foo = Pony.mail(:to => 'tsnydermtg@gmail.com', :subject => "Hi", :body => 'whatup?')
+    foo = Pony.mail(:to => email, :subject => "Hi", :body => 'whatup?')
     puts "#{foo}!!!!!!!!!!!!!!!!!!!!!!!!!!"
   else
     @message = "The email you provided was invalid"
