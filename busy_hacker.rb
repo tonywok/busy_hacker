@@ -21,7 +21,6 @@ configure do
       :password       => ENV['SENDGRID_PASSWORD'],
       :domain         => ENV['SENDGRID_DOMAIN']}
     }
-    raise ENV['SENDGRID_PASSWORD'].to_s
   else
     conn = Mongo::Connection.from_uri('mongodb://localhost')
     DATABASE = conn.db("busyhacker_#{environment}")
