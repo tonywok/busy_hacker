@@ -1,6 +1,3 @@
-require './lib/base_model'
-require './lib/validations'
-
 class Email < BaseModel
   attr_accessor :address
 

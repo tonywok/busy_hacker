@@ -1,5 +1,3 @@
-require './lib/validations'
-
 class BaseModel
   include Validations
   # include Persistence

@@ -1,5 +1,3 @@
-require './lib/base_model'
-
 class Article < BaseModel
   attr_accessor :hacker_id, :url, :title, :score, :date_added
 
