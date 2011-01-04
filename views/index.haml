@@ -15,3 +15,9 @@
         %label{:for => 'subscribe'} Subscribe
         %input{:name => 'address', :type => 'text'}
         %input{:type => 'submit', :value => 'Do it'}
+
+      #test
+        %h2 Top Articles
+        %ol
+          = @top_articles.each do |t|
+            %li= "#{t['title']} => [#{t['score']}]"

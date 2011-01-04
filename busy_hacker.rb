@@ -2,10 +2,10 @@ require 'uri'
 require 'open-uri'
 require './lib/scraper'
 require './lib/email'
+require './lib/article'
 
 configure do
   environment = ENV['RACK_ENV'] || Sinatra::Application.environment
-
 
   if connection_str = ENV['MONGOHQ_URL']
     uri  = URI.parse(connection_str)
@@ -30,6 +30,7 @@ configure do
 end
 
 get '/' do
+  @top_articles = Article.top_10_for_week
   haml :index
 end
 

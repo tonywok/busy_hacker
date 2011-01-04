@@ -1,6 +1,5 @@
 class BaseModel
   include Validations
-  # include Persistence
 
   attr_accessor :errors
 
