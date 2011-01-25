@@ -6,10 +6,6 @@ class Scraper
     @articles ||= DATABASE.collection('articles')
   end
 
-  def parse_file
-    Nokogiri::HTML(open('http://news.ycombinator.com'))
-  end
-
   def self.scrape_hn
     doc = parse_file
 
@@ -32,6 +28,12 @@ class Scraper
         end
       end
     end
+  end
+
+  private
+
+  def self.parse_file
+    Nokogiri::HTML(open('http://news.ycombinator.com'))
   end
 
 end
