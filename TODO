@@ -4,6 +4,9 @@ Specs
 Models
   - Tell the difference between attrs that are to be persisted and not
 
+Querys
+  - Implement a Monglet Query Object
+
 Validation
   - improve client syntax
   - custom messages
