@@ -10,7 +10,7 @@ configure do
   DATABASE = conn.db("busyhacker_#{environment}")
   Pony.options = { :from => 'noreply@busyhacker.com',
                    :via  => :sendmail }
-  @log = Logger.new("./log/#{environment}.log")
+  @@log = Logger.new("./log/#{environment}.log")
 end
 
 get '/' do
@@ -25,13 +25,13 @@ end
 
 post '/subscribe' do
   email = Email.new(:address => params[:address])
-  @log.info("attempt email subscription for: #{email}")
+  @@log.info("attempt email subscription for: #{email}")
   if email.valid?
-    @log.info("email valid?: #{email.valid?}")
+    @@log.info("email valid?: #{email.valid?}")
     Email.collection.insert({"address" => email.address})
     if Sinatra::Application.environment :production
       attempt = Pony.mail(:to => email.address, :subject => "Busy Hacker", :body => '')
-      @log.info("wtf?: #{attempt}")
+      @@log.info("wtf?: #{attempt}")
     end
   end
   redirect '/'
