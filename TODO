@@ -7,15 +7,13 @@ Models
 Querys
   - Implement a Monglet Query Object
 
+Email
+  - Confirmation email
+  - Unsubscribe link
+
 Validation
   - improve client syntax
   - custom messages
 
-Heroku
-  - add cron
-  - crontab for hourly hits?
-  - micro ec2 computation
-
 Frontend
-  - some more stylin'
   - ajax form submission with errors
