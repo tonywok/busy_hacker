@@ -35,4 +35,5 @@ end
 
 get '/scrape' do
   Scraper.scrape_hn
+  redirect '/'
 end
