@@ -3,6 +3,7 @@ require 'open-uri'
 require './lib/scraper'
 require './lib/email'
 require './lib/article'
+require 'logger'
 
 configure do
   environment = Sinatra::Application.environment
@@ -28,8 +29,9 @@ post '/subscribe' do
   @@log.info("attempt email subscription for: #{email}")
   if email.valid?
     @@log.info("email valid?: #{email.valid?}")
+    @@log.info(`which sendmail`)
     Email.collection.insert({"address" => email.address})
-    if Sinatra::Application.environment :production
+    if Sinatra::Application.environment == :production
       attempt = Pony.mail(:to => email.address, :subject => "Busy Hacker", :body => '')
       @@log.info("wtf?: #{attempt}")
     end
