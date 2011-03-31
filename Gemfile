@@ -13,6 +13,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano'
   gem 'shotgun'
   gem 'thin'
 end
