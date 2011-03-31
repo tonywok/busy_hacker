@@ -1,7 +1,9 @@
-!!!
+!!!5
 %html
   %head
     %title busy_hacker - Weekly email summarizing the hottest Hacker News Posts
+    %script{:src => 'js/jquery-1.4.4.min.js', :type => 'text/javascript'}
+    %script{:src => 'js/app.js', :type => 'text/javascript'}
     %link{:rel => 'stylesheet', :href => '/css/reset.css', :type => 'text/css', :media => 'all'}
     %link{:rel => 'stylesheet', :href => '/style.css', :type => 'text/css', :media => 'all'}
   %body
@@ -15,7 +17,7 @@
         Weekly email round-up of the most interesting articles on Hacker
         News.
       %form{:action => '/subscribe', :method => 'post', :id => 'subscribe'}
-        %input{:name => 'address', :value => 'your email address', :type => 'text', :class => 'text'}
+        %input{:name => 'address', :value => 'your email address', :type => 'text', :id => 'email'}
         %input{:type => 'submit', :value => 'Do it', :class => 'submit' }
 
       .clear

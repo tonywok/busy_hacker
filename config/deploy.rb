@@ -9,6 +9,7 @@ set :repository,  "git@github.com:tonywok/busy_hacker.git"
 set :branch, "master"
 set :ssh_options, { :forward_agent => true }
 set :stage, :production
+# change this to a deploy user, experiencing some permissions issues
 set :user, "ec2-user"
 set :use_sudo, false
 set :runner, "deploy"

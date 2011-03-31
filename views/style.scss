@@ -82,7 +82,7 @@ form#subscribe {
   border-bottom: double;
 
   input { padding: 30px; }
-  input.text[type='text'] {
+  input[type='text'] {
     color: #e1e1e1;
     width: 200px;
     font-size: 1.2em;

@@ -10,6 +10,7 @@ Querys
 Email
   - Confirmation email
   - Unsubscribe link
+  - Remove posts after a week (Tests)
 
 Validation
   - improve client syntax
@@ -17,3 +18,4 @@ Validation
 
 Frontend
   - ajax form submission with errors
+  - formalize css

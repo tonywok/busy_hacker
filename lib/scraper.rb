@@ -10,6 +10,7 @@ class Scraper
     doc = parse_file
 
     doc.xpath('//table')[2].children.each_slice(3).each do |data_block|
+      a_week_ago  = Time.now - Article::LENGTH_OF_WEEK_IN_SEC
       score_row = data_block[1]
       span      = score_row.css('span')[0]
 
@@ -19,7 +20,9 @@ class Scraper
         article   = articles.find({hacker_id: hacker_id}).first
 
         if article
-          Scraper.articles.update({'_id' => article['_id']}, {'$set' => {'score' => score}})
+          if article['date_added'] < a_week_ago
+            Scraper.articles.update({'_id' => article['_id']}, {'$set' => {'score' => score}})
+          end
         else
           link    = data_block[0].css('a:first').last
           url     = link.attr(:href)
