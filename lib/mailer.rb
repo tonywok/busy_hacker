@@ -22,7 +22,7 @@ class Mailer
       To get the weekly top 10 hottest Hacker News articles emailed to you
       in a newsletter, please confirm your email by clicking the following link.
 
-      http://localhost:9393/email_confirmation?token=#{email.confirm_token}
+      http://#{Sinatra::Application.settings.root_url}/email_confirmation?token=#{email.confirm_token}
     MESSAGE
   end
 end

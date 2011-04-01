@@ -26,15 +26,4 @@ class Email < BaseModel
   def set_email_confirmation_token
     self.confirm_token = Digest::SHA2.hexdigest("!@##{Time.now}$%^")
   end
-
-  def email_confirmation_message
-    <<-MESSAGE
-      Hey there,
-
-      To get the weekly top 10 hottest Hacker News articles emailed to you
-      in a newsletter, please confirm your email by clicking the following link.
-
-      http://#{Sinatra::Application.settings.root_url}/email_confirmation?token=#{confirm_token}
-    MESSAGE
-  end
 end
