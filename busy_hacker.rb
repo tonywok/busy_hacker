@@ -3,6 +3,7 @@ require 'open-uri'
 require './lib/scraper'
 require './lib/email'
 require './lib/article'
+require 'logger'
 require 'aws/ses'
 
 configure do
@@ -11,13 +12,12 @@ configure do
   DATABASE = conn.db("busyhacker_#{environment}")
   keys = YAML.load_file('.ses_keys')
 
-  puts environment
-  puts environment.class
   if environment == :production
     set :root_url, "tonyschneider.com"
   else
     set :root_url, "localhost:9393"
   end
+  set :logger, Logger.new("./log/#{environment}.log")
   set :ses_key_id, keys['ses_id']
   set :ses_secret, keys['ses_secret']
 end

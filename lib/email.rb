@@ -9,6 +9,7 @@ class Email < BaseModel
   must_be_present :address
 
   def subscribe
+    Sinatra::Application.logger.info("Attempting subscription for: #{address}")
     set_email_confirmation_token
     Email.collection.insert({"address"       => address,
                              "verified"      => false,
