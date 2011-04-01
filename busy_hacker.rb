@@ -10,6 +10,12 @@ configure do
   conn = Mongo::Connection.from_uri('mongodb://localhost')
   DATABASE = conn.db("busyhacker_#{environment}")
   keys = YAML.load_file('.ses_keys')
+
+  if environment == :production
+    set :root_url, "tonyschneider.com"
+  else
+    set :root_url, "localhost:9393"
+  end
   set :ses_key_id, keys['ses_id']
   set :ses_secret, keys['ses_secret']
 end
