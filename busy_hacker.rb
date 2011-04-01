@@ -11,7 +11,7 @@ configure do
   DATABASE = conn.db("busyhacker_#{environment}")
   keys = YAML.load_file('.ses_keys')
 
-  if environment == :production
+  if environment == 'production'
     set :root_url, "tonyschneider.com"
   else
     set :root_url, "localhost:9393"
