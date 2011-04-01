@@ -45,6 +45,20 @@ describe Email do
       end
     end
   end
+
+  describe 'self#confirm!' do
+    before do
+      @email = Email.new(:address => 'foo@bar.com')
+      @email.send(:set_email_confirmation_token)
+      Email.collection.insert({address: @email.address,
+                               verified: false,
+                               confirm_token: @email.confirm_token })
+    end
+
+    it 'uses a confirm token to verify an email' do
+      Email.confirm!(@email.confirm_token)
+      email = Email.collection.find({address: @email.address}).first
+      email['verified'].should be_true
+    end
+  end
 end
-
-
