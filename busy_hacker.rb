@@ -9,9 +9,9 @@ configure do
   environment = Sinatra::Application.environment
   conn = Mongo::Connection.from_uri('mongodb://localhost')
   DATABASE = conn.db("busyhacker_#{environment}")
-
-  set :ses_key_id, ENV['ses_access_key_id']
-  set :ses_secret, ENV['ses_secret_access_key']
+  keys = YAML.load_file('.ses_keys')
+  set :ses_key_id, keys['ses_id']
+  set :ses_secret, keys['ses_secret']
 end
 
 get '/' do
